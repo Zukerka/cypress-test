@@ -49,9 +49,5 @@ describe('First UI tests', ()=> {
             .should('be.visible')
             .should('contain', 'Hello, how are you today?')
     })
-
-    it.only('some test', ()=>{
-        expect(true).to.equal(false); 
-    })
     
 })

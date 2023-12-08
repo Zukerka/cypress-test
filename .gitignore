@@ -46,4 +46,4 @@ cypress/results
 mochawesome-report
 
 #screenshots
-cypress/screenshots
+cypress/screenshots/

@@ -1,25 +1,56 @@
 import { NavMenu } from "./components/NavMenuComponent"
 
-export class LoginPage{
-    get emailInput(){
+export class LoginPage {
+    get loginTitle(){
+        return cy.get('#title')
+    }
+
+    get emailInput() {
         return cy.get('#input-email')
     }
-    get emailErrorLabel(){
-        return cy.get('p.caption.status-danger').eq(0)
+
+    get emailErrorText() {
+        return cy.get('#input-email').next('.caption.status-danger')
     }
 
-    get passwordInput(){
+    get passwordInput() {
         return cy.get('#input-password')
-    }   
+    }
 
-    get loginButton(){
+    get passwordErrorText() {
+        return cy.get('#input-password').next('.caption.status-danger')
+    }
+
+    get rememberCheckbox() {
+        return cy.get('span').contains('Remember me')
+    }
+
+    get forgotPassLink() {
+        return cy.get('a.forgot-password')
+    }
+
+    get registerLink() {
+        return cy.get('a').contains('Register')
+    }
+
+    get loginButton() {
         return cy.contains('button', ' Log In ')
-    }  
+    }
+
+    get githubIconLink() {
+        return cy.get('nb-icon[ng-reflect-icon="github"]')
+    }
+
+    get fbIconLink() {
+        return cy.get('nb-icon[ng-reflect-icon="facebook"]')
+    }
+
+    get twitterIconLink() {
+        return cy.get('nb-icon[ng-reflect-icon="twitter"]')
+    }
 
 
-
-    
-    navMenu = new NavMenu(); 
+    navMenu = new NavMenu();
 
     // elements = {
     //     emailInput: () => cy.get('#input-email'),
@@ -29,11 +60,11 @@ export class LoginPage{
     //     loginButton: () => cy.contains('button', ' Log In ')
     // }
 
-    open(){
+    open() {
         return cy.visit('/auth/login')
     }
 
-    login(email, password){
+    login(email, password) {
         this.emailInput.type(email)
         this.passwordInput.type(password)
         this.loginButton.click()

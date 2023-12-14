@@ -38,33 +38,39 @@ describe('Login page tests', () => {
 
     })
 
-    it('Forget Password link accessible', () => {
-        loginPage.forgotPassLink.click()
-        cy.location('pathname').should('eq', '/auth/request-password')
-    })
-
-    it('Register link accessible', () => {
-        loginPage.registerLink.click()
-        cy.location('pathname').should('eq', '/auth/register')
-    })
-
-    context.skip('Social Media Link Accesssibility', () => {
-        it('GitHub link accessible', () => {
-            loginPage.githubIconLink.click()
-            // cy.location('pathname').should('eq', '/auth/register')
+    context('Register and Forgot Password Links\' redirect', () => {
+        it('Forget Password link accessible', () => {
+            loginPage.forgotPassLink.click()
+            cy.location('pathname').should('eq', '/auth/request-password')
         })
-        it('Facebook link accessible', () => {
-            loginPage.fbIconLink.click()
-            // cy.location('pathname').should('eq', '/auth/register')
-        })
-        it('Twitter link accessible', () => {
-            loginPage.twitterIconLink.click()
-            // cy.location('pathname').should('eq', '/auth/register')
+    
+        it('Register link accessible', () => {
+            loginPage.registerLink.click()
+            cy.location('pathname').should('eq', '/auth/register')
         })
     })
 
     it('Successful login', () => {
         loginPage.login('test@test.io', 'password')
+        cy.location('pathname').should('eq', '/pages')
     })
+
+    // context('Social Media Link Accesssibility', () => {
+    //     it.only('GitHub link accessible', () => {
+    //         loginPage.githubIconLink.invoke('removeAttr', 'target').click()
+    //         cy.url().then(url => {
+    //             cy.log('Current URL:', url);
+    //         });
+    //         cy.url({ timeout: 10000 }).should(url => {
+    //             expect(url).to.include('/akveo/nebular');
+    //         })
+    //     })
+    //     it('Facebook link accessible', () => {
+    //         loginPage.fbIconLink.click()
+    //     })
+    //     it('Twitter link accessible', () => {
+    //         loginPage.twitterIconLink.click()
+    //     })
+    // })
 
 })

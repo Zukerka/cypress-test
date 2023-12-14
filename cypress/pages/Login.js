@@ -38,7 +38,7 @@ export class LoginPage {
     }
 
     get githubIconLink() {
-        return cy.get('nb-icon[ng-reflect-icon="github"]')
+        return cy.get('nb-icon[ng-reflect-icon="github"]').parent('a')
     }
 
     get fbIconLink() {

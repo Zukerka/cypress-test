@@ -1,7 +1,9 @@
 import { ForgotPasswordPage } from "../pages/ForgotPassword";
+import { HeaderMenu } from "../pages/components/HeaderMenuComponent"
 
 describe('Forgot Password Page tests', () => {
     const forgotPassPage = new ForgotPasswordPage()
+    const headerMenu = new HeaderMenu()
 
     beforeEach(() => {
         cy.visit('auth/request-password')
@@ -36,6 +38,7 @@ describe('Forgot Password Page tests', () => {
         it('Happy pass', () => {
             forgotPassPage.requestPassword('test@test.io')
             cy.location('pathname').should('eq', '/pages')
+            headerMenu.user.should('be.visible')
         })
 
     })

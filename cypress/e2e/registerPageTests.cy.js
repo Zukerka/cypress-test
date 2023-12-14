@@ -1,7 +1,9 @@
 import { RegisterPage } from "../pages/Register";
+import { HeaderMenu } from "../pages/components/HeaderMenuComponent";
 
 describe('Register Page tests', () => {
     const registerPage = new RegisterPage()
+    const headerMenu = new HeaderMenu()
 
     beforeEach(() => {
         registerPage.open();
@@ -64,6 +66,7 @@ describe('Register Page tests', () => {
         it('Successful register', ()=> {
             registerPage.register('Natalia', 'test@test.io', 'passsword', 'passsword')
             cy.location('pathname').should('eq', '/pages')
+            headerMenu.user.should('be.visible')
         })
     })
 })

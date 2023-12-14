@@ -1,9 +1,12 @@
 /// <reference types = "cypress"/> 
 import { LoginPage } from "../pages/Login";
+import { HeaderMenu } from "../pages/components/HeaderMenuComponent";
+
 
 describe('Login page tests', () => {
 
     const loginPage = new LoginPage()
+    const headerMenu = new HeaderMenu()
 
     beforeEach(() => {
         loginPage.open();
@@ -53,6 +56,7 @@ describe('Login page tests', () => {
     it('Successful login', () => {
         loginPage.login('test@test.io', 'password')
         cy.location('pathname').should('eq', '/pages')
+        headerMenu.user.should('be.visible')
     })
 
     // context('Social Media Link Accesssibility', () => {

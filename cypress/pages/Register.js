@@ -49,15 +49,15 @@ export class RegisterPage {
     }
 
     get githubIconLink() {
-        return cy.get('nb-icon[ng-reflect-icon="github"]')
+        return cy.get('nb-icon[ng-reflect-icon="github"]').parent('a')
     }
 
     get fbIconLink() {
-        return cy.get('nb-icon[ng-reflect-icon="facebook"]')
+        return cy.get('nb-icon[ng-reflect-icon="facebook"]').parent('a')
     }
 
     get twitterIconLink() {
-        return cy.get('nb-icon[ng-reflect-icon="twitter"]')
+        return cy.get('nb-icon[ng-reflect-icon="twitter"]').parent('a')
     }
 
     get loginLink() {

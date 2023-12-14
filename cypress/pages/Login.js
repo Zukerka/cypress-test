@@ -42,13 +42,12 @@ export class LoginPage {
     }
 
     get fbIconLink() {
-        return cy.get('nb-icon[ng-reflect-icon="facebook"]')
+        return cy.get('nb-icon[ng-reflect-icon="facebook"]').parent('a')
     }
 
     get twitterIconLink() {
-        return cy.get('nb-icon[ng-reflect-icon="twitter"]')
+        return cy.get('nb-icon[ng-reflect-icon="twitter"]').parent('a')
     }
-
 
     navMenu = new NavMenu();
 

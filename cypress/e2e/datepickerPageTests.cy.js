@@ -1,8 +1,9 @@
 /// <reference types = "cypress"/>  
 
+import moment from 'moment';
 import { DatepickerPage } from "../pages/DatePickerPage.js"; 
 
-describe('Login page tests', () => {
+describe('Datepicker page tests', () => {
 
     const datepickerPage = new DatepickerPage(); 
 
@@ -10,9 +11,13 @@ describe('Login page tests', () => {
         datepickerPage.open()
     })
 
-    it('Today test', () => {
+    it('Verify Today\'s Calendar Date Display', () => {
+
+        const todayDate = moment().format('ll') 
+
         datepickerPage.commonDatepickerInput.click()
         datepickerPage.todayDate.click()
+        datepickerPage.commonDatepickerInput.should('have.value', todayDate)
         
     })
 })

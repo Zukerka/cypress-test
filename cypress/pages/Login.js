@@ -60,7 +60,10 @@ export class LoginPage {
     // }
 
     open() {
-        return cy.visit('/auth/login')
+        cy.visit('/pages')
+        this.navMenu.openMenuByTitle('Auth')
+        this.navMenu.openMenuByTitle('Login')
+        return this; 
     }
 
     login(email, password) {

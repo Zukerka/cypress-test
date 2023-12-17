@@ -9,6 +9,7 @@ export default defineConfig({
     json:true
   },
   e2e: {
+    viewportWidth: 1200, 
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

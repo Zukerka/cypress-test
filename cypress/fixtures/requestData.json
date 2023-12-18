@@ -1,0 +1,15 @@
+{
+    "requestBody1" : {
+        "body": "my body",
+        "id": 101,
+        "title": "my title",
+        "userId": 11
+    },
+
+    "requestBody2" : {
+        "body": "my new body",
+        "id": 99,
+        "title": "my new updated title",
+        "userId": 11
+    }   
+}

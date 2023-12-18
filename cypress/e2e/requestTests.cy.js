@@ -10,7 +10,7 @@ describe('Request tests', () => {
             expect(res.status).to.eq(200)
             expect(res.headers['content-type']).to.include('application/json')
             expect(res.body).to.have.length(100)
-            
+
             expect(res.body[0]).to.have.property('userId')
             expect(res.body[0]).to.have.property('id')
             expect(res.body[0]).to.have.property('title')

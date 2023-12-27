@@ -1,0 +1,14 @@
+name: Cypress test
+on: workflow_dispatch
+
+jobs:
+  cypress_run:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get project files
+        uses: actions/checkout@v4
+      - name: Install all dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run cy:run:server
+      

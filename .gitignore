@@ -47,3 +47,6 @@ mochawesome-report
 
 #screenshots
 cypress/screenshots/
+
+#env
+cypress.env.json

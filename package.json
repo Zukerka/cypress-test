@@ -33,7 +33,7 @@
     "reports:merge": "npx mochawesome-merge 'cypress/results/*.json' > 'cypress/merged-report/mochawesome.json'",
     "report:html": "npx marge cypress/merged-report/mochawesome.json",
     "report:delete": "rm cypress/results/* || true",
-    "cy:run:report": "npm run report:delete && npm run cy:smoke-tests",
+    "cy:run:report": "npm run report:delete && npm run cy:smoke-tests --record",
     "report:all": "npm run reports:merge && npm run report:html",
     "cy:run:server": "start-test start http-get://localhost:4200/ cy:run:report"
   },

@@ -12,7 +12,7 @@ describe('Login page tests', () => {
         loginPage.open();
     })
 
-    context.skip('Fields validation tests', () => {
+    context('Fields validation tests', () => {
 
         it('No email entered', () => {
             loginPage.emailInput.click()

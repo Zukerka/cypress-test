@@ -1,5 +1,11 @@
 name: Cypress test
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request: 
+    types: [opened, edited, reopened]
 
 jobs:
   cypress_run:
@@ -15,4 +21,7 @@ jobs:
         run: npm run report:all
       - name: Upload report
         uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: merged-report/
       

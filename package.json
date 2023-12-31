@@ -30,11 +30,11 @@
     "prepush": "npm run lint:ci",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "cy:smoke-tests": "npx cypress run -s 'cypress/e2e/smoke-tests/*' --browser chrome",
-    "cy:run-tests": "npx cypress run",
+    "cy:run-tests": "npx cypress run --record --parallel",
     "reports:merge": "npx mochawesome-merge 'cypress/results/*.json' -o 'cypress/merged-report/mochawesome.json'",
     "report:html": "npx marge cypress/merged-report/mochawesome.json",
     "report:delete": "rm cypress/results/* || true",
-    "cy:run:report": "npm run report:delete && npm run cy:run-tests --record",
+    "cy:run:report": "npm run report:delete && npm run cy:run-tests",
     "report:all": "npm run reports:merge && npm run report:html",
     "cy:run:server": "start-test start http-get://localhost:4200/ cy:run:report"
   },

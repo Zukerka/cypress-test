@@ -1,11 +1,17 @@
 name: Cypress test
 on: 
+  schedule:
+    - cron: '0 8 * * 2'
   workflow_dispatch:
   push:
     branches:
       - master
   pull_request: 
     types: [opened, edited, reopened]
+
+env: 
+  CYPRESS_RECORD_KEY: ${{secrets.CYPRESS_RECORD_KEY}}
+  # USER: ${{secrets.USER}}
 
 jobs:
   cypress_run:
@@ -18,8 +24,28 @@ jobs:
       - name: Run tests
         run: npm run cy:run:server
       - name: Create report
+        if: success() || failure()
         run: npm run report:all
       - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: mochawesome-report/
+  cypress_run2:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get project files
+        uses: actions/checkout@v4
+      - name: Install all dependencies
+        run: npm install --force
+      - name: Run tests
+        run: npm run cy:run:server
+      - name: Create report
+        if: success() || failure()
+        run: npm run report:all
+      - name: Upload report
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-results
